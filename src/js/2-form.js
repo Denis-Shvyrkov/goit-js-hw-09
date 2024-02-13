@@ -2,8 +2,6 @@ const STORAGE_KEY = 'userData';
 
 const form = document.querySelector('form');
 
-const textarea = form.querySelector('.textarea');
-
 init();
 
 form.addEventListener('input', onFormInput);
@@ -13,8 +11,8 @@ form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(e) {
   e.preventDefault();
 
-  const email = form.elements.email.value;
-  const message = form.elements.message.value;
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
 
   const data = {
     email,
@@ -28,8 +26,8 @@ function onFormSubmit(e) {
   form.reset();
 }
 function onFormInput() {
-  const email = form.elements.email.value;
-  const message = form.elements.message.value;
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
 
   const data = {
     email,
@@ -40,9 +38,9 @@ function onFormInput() {
 }
 
 function saveToLS(key, value) {
-  const strfdValue = JSON.stringify(value);
+  const stringifiedValue = JSON.stringify(value);
 
-  localStorage.setItem(key, strfdValue);
+  localStorage.setItem(key, stringifiedValue);
 }
 
 function loadFromLS(key) {
